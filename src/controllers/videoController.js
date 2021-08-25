@@ -20,7 +20,31 @@ export const postEdit = (req, res) => {
 export const getUpload = (req, res) => {
     return res.render("upload", {pageTitle: "Upload Video"});
 }
-export const postUpload = (req, res) => {
+export const postUpload = async (req, res) => {
     // console.log(req.body);
+    const {videoTitle, description, hashtags} = req.body;
+    await Video.create({ // document
+        title : videoTitle,
+        description,
+        createdAt : Date.now(),
+        hashtags : hashtags.split(",").map(word => `#${word}`),
+        meta : {
+            views : 0,
+            rating : 0
+        }
+    });
+    /* 위의 코드와 같다. (데이터베이스에 저장)
+        const video = new Video({ // document
+        title : videoTitle,
+        description,
+        createdAt : Date.now(),
+        hashtags : hashtags.split(",").map(word => `#${word}`),
+        meta : {
+            views : 0,
+            rating : 0
+        }
+    }); 
+    await video.save(); */
+    
     return res.redirect("/");
 }
