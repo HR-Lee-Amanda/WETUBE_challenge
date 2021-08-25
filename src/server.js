@@ -14,6 +14,7 @@ app.set("views", process.cwd()+"/src/views"); // view engine 파일을 찾는 �
 
 app.use(morgan("dev"));
 // app.use(logger);  app.get() 이전에 와야한다.
+app.use(express.urlencoded({extended: true}));
 
 app.use("/", globalRouter);
 app.use("/videos", videoRouter);
