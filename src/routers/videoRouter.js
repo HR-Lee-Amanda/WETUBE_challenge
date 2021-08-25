@@ -8,7 +8,7 @@ videoRouter.get("/:id(\\d+)", watch); // id(\\d+) 이거는 정규식과 이름�
 //videoRouter.route("/:id(\\d+)/edit").get(edit).post(postEdit); -> 아래 두 줄 통합
 videoRouter.post("/:id(\\d+)/edit", postEdit);
 videoRouter.get("/:id(\\d+)/edit", edit);
-videoRouter.get("/:id(\\d+)/remove", remove);
+//videoRouter.get("/:id(\\d+)/remove", remove);
 videoRouter.get("/upload", getUpload);
 videoRouter.post("/upload", postUpload);
 
